@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Welcome from "./screens/Welcome";
+import Login from "./screens/Login";
+import Landing from "./screens/Landing";
+import { checkToken } from "../src/utils/index"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const AuthRoute = ({ children }) => {
+  const isAuthenticated = checkToken();
+  return isAuthenticated ? <Navigate to="/" replace /> : children;
 }
+
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = checkToken();
+  return isAuthenticated ? children : <Navigate to="/" replace />;
+}
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<AuthRoute><Welcome/></AuthRoute>}
+        />
+        <Route
+          path="/login"
+          element={<AuthRoute><Login/></AuthRoute>}
+        />
+        <Route
+          path="/landing"
+          element={<PrivateRoute><Landing /></PrivateRoute>}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;

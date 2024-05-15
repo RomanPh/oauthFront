@@ -1,0 +1,55 @@
+.searchForm {
+	background-color: #f2f2f2;
+	text-align: center;
+	padding: 20px;
+}
+
+.searchLabel {
+	padding: 20px;
+}
+
+.searchLabel>input {
+	margin-left: 20px;
+}
+
+.accountForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.accountForm>label {
+	padding:  0 0 20px 0;
+}
+
+.accountProfileEditing {
+	display: flex;
+	justify-content: center;
+}
+
+.accountProfileEditing>button {
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.accountFormUpdate {
+	width: 65px;
+	margin: 0 auto;
+}
+
+.navBarItemStyle {
+	background-color: "white";
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.main {
+	text-align: center;
+	margin: 3rem;
+}
+
+.navBar {
+	display: flex;
+	justify-content: space-around;
+	background-color: "white";
+	padding: "0.5rem 1rem";
+}
